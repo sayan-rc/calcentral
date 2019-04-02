@@ -81,17 +81,11 @@ gem 'rails_admin', '1.3.0'
 
 gem 'bootstrap-sass', '~> 3.3.1.0'
 
-# Background jobs without TorqueBox
 gem 'concurrent-ruby', '~> 1.0.5'
 
-# TorqueBox app server
-gem 'torquebox', '~> 3.2.0'
-gem 'torquebox-server', '~> 3.2.0'
-gem 'torquebox-messaging', '~> 3.2.0'
-gem 'jmx', '~> 1.0'
-
 # for building a WAR to deploy on Tomcat
-gem 'warbler', '~> 2.0.4'
+gem 'warbler', '~> 2.0.5'
+gem 'jruby-jars', '9.1.4.0'
 
 # for trying, and trying again, and then giving up.
 gem 'retriable', '~> 1.4'
@@ -168,9 +162,6 @@ group :development do
   # Automatically reloads your browser when 'view' files are modified.
   # https://github.com/guard/guard-livereload
   gem 'guard-livereload', '~> 2.4.0', require: false
-
-  # To support debug in Torquebox.
-  gem 'ruby-debug-ide', '~> 0.6.0'
 end
 
 group :test do

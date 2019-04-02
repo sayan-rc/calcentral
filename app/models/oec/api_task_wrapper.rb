@@ -1,6 +1,6 @@
 module Oec
   class ApiTaskWrapper
-    include BackgroundableShim
+    include BackgroundThread
     include ClassLogger
 
     TASK_LIST = [
