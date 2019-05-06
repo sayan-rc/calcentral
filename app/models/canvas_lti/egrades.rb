@@ -60,7 +60,7 @@ module CanvasLti
 
     def bg_canvas_course_student_grades(force = false)
       background_job_initialize
-      background_correlate(background.canvas_course_student_grades(force))
+      background.canvas_course_student_grades(force)
     end
 
     def canvas_course_student_grades(force = false)

@@ -37,12 +37,11 @@ describe PingController do
   end
 
   context 'Both databases available' do
+    let (:expected) { { 'server_alive' => true }.to_json }
     before do
       User::Data.stub(:database_alive?).and_return(true)
       CampusOracle::Queries.stub(:database_alive?).and_return(true)
     end
-
-    let (:expected) { { 'server_alive' => true }.to_json }
 
     it 'renders a json file with server status' do
       get :do

@@ -79,7 +79,7 @@ module Oec
         {status: 'In progress', log: []},
         task_id
       )
-      background_correlate(self.background(future_ttl: 5000).run(task_id), task_id)
+      self.background(future_ttl: 5000).run(task_id)
       {
         id: task_id,
         status: 'In progress'
@@ -87,12 +87,6 @@ module Oec
     end
 
     private
-
-    def background_correlate(backgroundable_future, task_id)
-      torquebox_correlation_id = backgroundable_future.respond_to?(:correlation_id) ? backgroundable_future.correlation_id : nil
-      logger.warn "#{@task_class.name} task_id = #{task_id}, Torquebox correlation_id = #{torquebox_correlation_id}"
-      backgroundable_future
-    end
 
     def translate_params(params)
       term_code = Berkeley::TermCodes.from_english params['term']

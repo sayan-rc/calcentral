@@ -49,7 +49,6 @@ describe CanvasCsv::ProvideCourseSite do
     before do
       allow(subject).to receive(:current_terms).and_return(current_terms)
       allow(subject).to receive(:background).and_return(subject)
-      allow(subject).to receive(:background_correlate).and_return(true)
       task_steps.each do |step|
         allow(subject).to receive(step)
       end
@@ -135,7 +134,6 @@ describe CanvasCsv::ProvideCourseSite do
     before do
       allow(subject).to receive(:current_terms).and_return(current_terms)
       allow(subject).to receive(:background).and_return(subject)
-      allow(subject).to receive(:background_correlate).and_return(true)
       task_steps.each do |step|
         allow(subject).to receive(step)
       end
@@ -640,7 +638,6 @@ describe CanvasCsv::ProvideCourseSite do
     let(:maintainer) {double}
     before do
       allow(subject).to receive(:background).and_return(subject)
-      allow(subject).to receive(:background_correlate).and_return(true)
     end
     it 'should forward to a background job handler' do
       expect(CanvasCsv::SiteMembershipsMaintainer).to receive(:import_memberships).with(course_id, section_ids, anything, anything)
