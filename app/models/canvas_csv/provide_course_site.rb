@@ -15,7 +15,7 @@ module CanvasCsv
 
     def bg_create_course_site(site_name, site_course_code, term_slug, ccns, is_admin_by_ccns = false)
       background_job_initialize(job_type: 'course_creation', total_steps: 10)
-      background_correlate(background.create_course_site(site_name, site_course_code, term_slug, ccns, is_admin_by_ccns))
+      background.create_course_site(site_name, site_course_code, term_slug, ccns, is_admin_by_ccns)
     end
 
     def create_course_site(site_name, site_course_code, term_slug, ccns, is_admin_by_ccns = false)
@@ -60,7 +60,7 @@ module CanvasCsv
       total_steps += 2 if ccns_to_add.present?
       total_steps += 1 if ccns_to_remove.present?
       background_job_initialize(job_type: 'edit_sections', total_steps: total_steps)
-      background_correlate(background.edit_sections(canvas_course_info, ccns_to_remove, ccns_to_add))
+      background.edit_sections(canvas_course_info, ccns_to_remove, ccns_to_add)
     end
 
     def edit_sections(canvas_course_info, ccns_to_remove, ccns_to_add)
@@ -238,7 +238,7 @@ module CanvasCsv
 
     def bg_import_enrollments(sis_course_id, canvas_section_rows, into_canvas_course_id)
       background_job_initialize(job_type: 'import_enrollments', total_steps: 1)
-      background_correlate(background.import_enrollments(sis_course_id, canvas_section_rows, into_canvas_course_id))
+      background.import_enrollments(sis_course_id, canvas_section_rows, into_canvas_course_id)
     end
 
     def import_enrollments(sis_course_id, canvas_section_rows, into_canvas_course_id)
